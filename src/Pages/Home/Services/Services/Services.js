@@ -3,6 +3,7 @@ import fluoride from '../../../../assets/images/fluoride.png';
 import cavity from '../../../../assets/images/cavity.png';
 import whitening from '../../../../assets/images/whitening.png';
 import Card from '../Card/Card';
+import Exceptional from '../../Exceptional/Exceptional';
 
 const Services = () => {
     const cards = [
@@ -28,10 +29,10 @@ const Services = () => {
     ]
 
     return (
-        <div className='text-center'>
-            <h3 className='text-secondary font-bold text-xl '>OUR SERVICES</h3>
-            <h2 className='text-accent text-4xl font-normal mt-1'>Services We Provide</h2>
-            <div className='grid sm:grid-cols-1 lg:grid-cols-3 gap-5 mt-16 mb-40'>
+        <div>
+            <h3 className='text-secondary font-bold text-xl text-center'>OUR SERVICES</h3>
+            <h2 className='text-accent text-4xl font-normal mt-1 text-center'>Services We Provide</h2>
+            <div className='grid sm:grid-cols-1 lg:grid-cols-3 gap-5 mt-16 mb-14 lg:mb-40 justify-items-center'>
                 {
                     cards.map(card => <Card
                     key={card.id}
@@ -41,6 +42,7 @@ const Services = () => {
                     ></Card>)
                 }
             </div>
+            <Exceptional></Exceptional>
         </div>
     );
 };

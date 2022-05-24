@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const menuItems = <>
-        <li><Link to='/home'>Home</Link></li>
-        <li><Link to='/about'>About</Link></li>
-        <li><Link to='/appointment'>Appointment</Link></li>
-        <li><Link to='/reviews'>Reviews</Link></li>
-        <li><Link to='/contact'>Contact</Link></li>
-        <li><Link to='/login'>Login</Link></li>
+        <li><Link className='hover:bg-accent hover:text-white' to='/home'>Home</Link></li>
+        <li><Link className='hover:bg-accent hover:text-white' to='/about'>About</Link></li>
+        <li><Link className='hover:bg-accent hover:text-white' to='/appointment'>Appointment</Link></li>
+        <li><Link className='hover:bg-accent hover:text-white' to='/reviews'>Reviews</Link></li>
+        <li><Link className='hover:bg-accent hover:text-white' to='/contact'>Contact</Link></li>
+        <li><Link className='hover:bg-accent hover:text-white' to='/login'>Login</Link></li>
     </>
 
     return (
@@ -22,7 +22,7 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-xl">Doctors Portal</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-xl hover:bg-accent hover:text-white">Doctors Portal</Link>
             </div>
             <div className="navbar-end  hidden lg:flex ">
                 <ul className="menu menu-horizontal p-0">

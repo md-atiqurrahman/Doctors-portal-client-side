@@ -36,7 +36,7 @@ const Info = () => {
                     cards.map(card => <InfoCard
                         key={card._id}
                         img={card.img}
-                        bgclassName={card.bgClass}
+                        bgClass={card.bgClass}
                         pageTitle={card.pageTitle}
                         details={card.details}
                     ></InfoCard>)

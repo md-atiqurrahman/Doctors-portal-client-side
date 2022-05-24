@@ -24,7 +24,7 @@ const Footer = () => {
                     <p className='text-accent font-normal'>New York - 101010 Hudson</p>
                 </div>
             </div>
-            <h5 className='text-center text-base lg:text-sm font-normal mt-[54px] lg:mt-[74px] mb-[69px] lg:mb-[5px]'>Copyright {year} All Rights Reserved</h5>
+            <h5 className='text-center text-base lg:text-sm font-normal mt-[54px] lg:mt-[74px] mb-[69px] lg:mb-[5px]'>Copyright © {year} All Rights Reserved</h5>
         </footer>
     );
 };

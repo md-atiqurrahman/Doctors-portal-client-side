@@ -11,6 +11,8 @@ import 'react-day-picker/dist/style.css';
 import SignUp from './Pages/Login/SignUp/SignUp';
 import RequireAuth from './Pages/Shared/RequireAuth/RequireAuth';
 import Appointment from './Pages/Appointment/Appointment/Appointment';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -31,6 +33,7 @@ function App() {
         <Route path='/signUp' element={<SignUp></SignUp>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+      <ToastContainer/>
     </div>
   );
 }

@@ -1,13 +1,16 @@
-import React from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import React, { useEffect } from 'react';
+import { useSignInWithGoogle, useCreateUserWithEmailAndPassword,useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../../Shared/Loading/Loading';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const SignUp = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+
+
     const [
         createUserWithEmailAndPassword,
         user,
@@ -19,44 +22,49 @@ const SignUp = () => {
 
     const navigate = useNavigate();
 
-    let signInError;
+    useEffect(() =>{
+        if (user || gUser) {
+            navigate('/appointment')
+        }
+    },[user,gUser,navigate])
+
 
     if (loading || gLoading || updating) {
-        return  <Loading></Loading>
+        return <Loading></Loading>
     }
 
+    let setError;
     if (error || gError || updateError) {
-        signInError = <p className='text-red-500'><small>{error?.message || gError?.message || updateError?.message}</small></p>
+        setError = <p className='text-red-500'><small>{error?.message || gError?.message || updateError?.message}</small></p>
     }
 
-    if (user || gUser) {
-        console.log(user || gUser);
-    }
 
-    const onSubmit = async data => {
-        await createUserWithEmailAndPassword(data.email, data.password);
+    const onSubmit = async (data) => {
+        await createUserWithEmailAndPassword(data.email, data.password)
         await updateProfile({ displayName: data.name });
-        navigate('/appointment');
-    }
+        reset();
+    };
+
+
     return (
         <div className='flex h-screen justify-center items-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
-                    <h2 className="text-center text-2xl font-bold">Sign Up</h2>
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <h2 className='text-center text-2xl font-normal text-accent'>Sign Up</h2>
 
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
                             <input
                                 type="text"
-                                placeholder="Your Name"
+                                placeholder="Your name"
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("name", {
                                     required: {
                                         value: true,
-                                        message: 'Name is Required'
+                                        message: 'Name is required'
                                     }
                                 })}
                             />
@@ -71,16 +79,16 @@ const SignUp = () => {
                             </label>
                             <input
                                 type="email"
-                                placeholder="Your Email"
+                                placeholder="Your email"
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("email", {
                                     required: {
                                         value: true,
-                                        message: 'Email is Required'
+                                        message: 'Email is required'
                                     },
                                     pattern: {
-                                        value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                                        message: 'Provide a valid Email'
+                                        value: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,20}$/,
+                                        message: 'Provide a valid email'
                                     }
                                 })}
                             />
@@ -89,6 +97,7 @@ const SignUp = () => {
                                 {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                             </label>
                         </div>
+
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Password</span>
@@ -100,11 +109,11 @@ const SignUp = () => {
                                 {...register("password", {
                                     required: {
                                         value: true,
-                                        message: 'Password is Required'
+                                        message: 'Password is required'
                                     },
                                     minLength: {
                                         value: 6,
-                                        message: 'Must be 6 characters or longer'
+                                        message: 'Password should contains at least 6 characters'
                                     }
                                 })}
                             />
@@ -114,18 +123,19 @@ const SignUp = () => {
                             </label>
                         </div>
 
-                        {signInError}
-                        <input className='btn w-full max-w-xs text-white' type="submit" value="Sign Up" />
+                        {setError}
+                        <input className='btn w-full max-w-xs text-white' type="submit" value='SignUp' />
                     </form>
-                    <p><small>Already have an account? <Link className='text-primary' to="/login">Please login</Link></small></p>
+                    <p className='text-xs'>
+                        Already have an account?
+                        <Link className='text-secondary' to='/login'> Please login
+                        </Link>
+                    </p>
                     <div className="divider">OR</div>
-                    <button
-                        onClick={() => signInWithGoogle()}
-                        className="btn btn-outline"
-                    >Continue with Google</button>
+                    <button onClick={() => signInWithGoogle()} className="btn btn-outline">Continue with Google</button>
                 </div>
             </div>
-        </div >
+        </div>
     );
 };
 

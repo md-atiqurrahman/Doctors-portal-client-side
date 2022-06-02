@@ -17,7 +17,7 @@ const Navbar = () => {
         <li><Link className='hover:bg-accent hover:text-white' to='/appointment'>Appointment</Link></li>
         <li><Link className='hover:bg-accent hover:text-white' to='/reviews'>Reviews</Link></li>
         <li><Link className='hover:bg-accent hover:text-white' to='/contact'>Contact</Link></li>
-        <li>{user ? <button onClick={LogOut} className="btn  btn-ghost">Sign Out</button> : <Link className='hover:bg-accent hover:text-white' to='/login'>Login</Link>}</li>
+        <li>{user ? <Link to='/home' onClick={LogOut} className="btn  btn-ghost capitalize">Sign Out</Link> : <Link className='hover:bg-accent hover:text-white' to='/login'>Login</Link>}</li>
     </>
 
     return (

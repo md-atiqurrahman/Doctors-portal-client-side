@@ -4,7 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 
-const BookingModal = ({ date, treatment, setTreatment}) => {
+const BookingModal = ({ date, treatment, setTreatment }) => {
     const [user] = useAuthState(auth);
     const { _id, name, slots } = treatment;
     const formattedDate = format(date, 'PP');
@@ -54,7 +54,10 @@ const BookingModal = ({ date, treatment, setTreatment}) => {
                         <input type="text" name='date' readOnly value={`${format(date, 'PP')}`} className="input input-bordered w-full max-w-xs text-xl text-accent" />
                         <select name='slot' className="select select-bordered w-full max-w-xs text-accent text-xl">
                             {
-                                slots.map(slot => <option key={slots.indexOf(slot)} readOnly value={slot}>{slot}</option>)
+                                slots.map((slot,index) => <option
+                                    key={index}
+                                    readOnly value={slot}>{slot}
+                                </option>)
                             }
                         </select>
                         <input type="text" name='name' readOnly value={user?.displayName || ''} className="input input-bordered w-full max-w-xs" />

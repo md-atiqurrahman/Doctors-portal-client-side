@@ -7,7 +7,7 @@ module.exports = {
         'bg-appointment': "url('/src/assets/images/appointment.png')",
         'bg-footer': "url('/src/assets/images/footer.png')",
       }
-    },
+    }
   },
   daisyui: {
     themes: [

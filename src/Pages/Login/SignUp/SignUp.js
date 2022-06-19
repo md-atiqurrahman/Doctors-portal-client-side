@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import Loading from '../../Shared/Loading/Loading';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useToken from '../../../hooks/useToken';
 
 
 const SignUp = () => {
@@ -29,11 +30,13 @@ const SignUp = () => {
 
     const navigate = useNavigate();
 
+    const [token] = useToken(user || gUser);
+
     useEffect(() => {
-        if (user || gUser) {
+        if (token) {
             navigate('/appointment')
         }
-    }, [user, gUser, navigate])
+    }, [token, navigate])
 
 
     if (loading || gLoading || updating || sending) {

@@ -5,8 +5,12 @@ import { useForm } from "react-hook-form";
 import Loading from '../../Shared/Loading/Loading';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useToken from '../../../hooks/useToken';
 
 const Login = () => {
+    const [userEmail, setUserEmail] = useState('');
+    const [emptyError, setEmptyError] = useState('');
+
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const {
         register,
@@ -14,13 +18,7 @@ const Login = () => {
         handleSubmit,
         reset
     } = useForm();
-
-    const [userEmail, setUserEmail] = useState('');
-    const navigate = useNavigate();
-    const location = useLocation();
-
-    let from = location.state?.from?.pathname || "/";
-
+    
     const [
         signInWithEmailAndPassword,
         user,
@@ -30,13 +28,19 @@ const Login = () => {
 
     const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(auth);
 
-    const [emptyError, setEmptyError] = useState('');
+    const [token] = useToken(user || gUser)
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    let from = location.state?.from?.pathname || "/";
+
 
     useEffect(() => {
-        if (user || gUser) {
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [user, gUser, from, navigate]);
+    }, [token, from, navigate]);
 
     if (loading || gLoading || sending) {
         return <Loading></Loading>

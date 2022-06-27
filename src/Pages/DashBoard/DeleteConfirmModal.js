@@ -27,7 +27,7 @@ const DeleteConfirmModal = ({deletingDoctor ,refetch ,setDeletingDoctor}) => {
             <input type="checkbox" id="delete-confirm-modal" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
-                    <h3 className="text-xl text-red-500">Are you sure to delete Doctor{name}!</h3>
+                    <h3 className="text-xl text-red-500">Are you sure to delete Doctor {name}!</h3>
                     <div className="modal-action">
                     <button onClick={() => handleDelete()} className='btn btn-xs btn-error'>Delete</button>
                         <label htmlFor="delete-confirm-modal" className="btn btn-xs">Cancel</label>

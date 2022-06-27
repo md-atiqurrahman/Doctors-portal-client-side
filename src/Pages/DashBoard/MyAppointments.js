@@ -2,7 +2,7 @@ import { signOut } from 'firebase/auth';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const MyAppointments = () => {
@@ -12,14 +12,14 @@ const MyAppointments = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`https://obscure-bastion-37135.herokuapp.com/booking?email=${user.email}`,{
+            fetch(`https://obscure-bastion-37135.herokuapp.com/booking?email=${user.email}`, {
                 method: 'GET',
-                headers:{
+                headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                 }
             })
                 .then(res => {
-                    if(res.status === 401 || res.status === 403){
+                    if (res.status === 401 || res.status === 403) {
                         signOut(auth);
                         localStorage.removeItem('accessToken')
                         navigate('/home');
@@ -28,7 +28,7 @@ const MyAppointments = () => {
                 })
                 .then(data => setAppointments(data))
         }
-    }, [user ,navigate])
+    }, [user, navigate])
 
     return (
         <div>
@@ -41,16 +41,21 @@ const MyAppointments = () => {
                             <th>Date</th>
                             <th>Time</th>
                             <th>Treatment</th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            appointments.map((a,index) => <tr key={index} className='hover'>
+                            appointments.map((a, index) => <tr key={index} className='hover'>
                                 <th>{index + 1}</th>
                                 <td>{a.patientName}</td>
                                 <td>{a.date}</td>
                                 <td>{a.slot}</td>
                                 <td>{a.treatment}</td>
+                                <td>
+                                    {(a.price && !a.paid) && <Link to={`/dashboard/payment/${a._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link>}
+                                    {(a.price && a.paid) && <span className='text-success'>Paid</span>}
+                                </td>
                             </tr>)
                         }
                     </tbody>

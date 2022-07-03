@@ -7,7 +7,7 @@ import Loading from '../Shared/Loading/Loading';
 const AddDoctor = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: services, isLoading } = useQuery('services', () => fetch('http://localhost:5000/service').then(res => res.json()))
+    const { data: services, isLoading } = useQuery('services', () => fetch('https://obscure-bastion-37135.herokuapp.com/service').then(res => res.json()))
 
     const imageStorageKey = 'bc3bb4b5442823149fe678acef500960';
 
@@ -34,7 +34,7 @@ const AddDoctor = () => {
 
                 // send doctor to database via server
 
-                fetch('http://localhost:5000/doctors', {
+                fetch('https://obscure-bastion-37135.herokuapp.com/doctors', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

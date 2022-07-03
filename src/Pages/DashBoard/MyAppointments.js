@@ -42,6 +42,7 @@ const MyAppointments = () => {
                             <th>Time</th>
                             <th>Treatment</th>
                             <th>Payment</th>
+                            <th>TransactionId</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,6 +56,12 @@ const MyAppointments = () => {
                                 <td>
                                     {(a.price && !a.paid) && <Link to={`/dashboard/payment/${a._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link>}
                                     {(a.price && a.paid) && <span className='text-success uppercase'>Paid</span>}
+                                </td>
+                                <td>
+                                    {
+                                        (a.price && a.paid) && <span
+                                        className='text-[#330000]'>{a.transactionId}</span>
+                                    }
                                 </td>
                             </tr>)
                         }

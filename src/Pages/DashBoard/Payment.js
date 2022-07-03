@@ -11,7 +11,7 @@ const stripePromise = loadStripe('pk_test_51LFbkDJ5xIASYdcW05XvapGW8tEWVcQCYRnih
 const Payment = () => {
     const { appointmentId } = useParams();
 
-    const url = `http://localhost:5000/booking/${appointmentId}`;
+    const url = `https://obscure-bastion-37135.herokuapp.com/booking/${appointmentId}`;
 
     const { data: appointment, isLoading } = useQuery(['booking', appointmentId], () => fetch(url, {
         method: 'GET',

@@ -1,10 +1,11 @@
-# Getting Started with Create React App
+# Doctors Portal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project live link [Click here](https://doctors-portal-ab5c7.web.app/).
 
-## Available Scripts
+## Admin Credentials
 
-In the project directory, you can run:
+Email: mdatiqurrahman9104@gmail.com
+Password: 123456
 
 ### `npm start`
 

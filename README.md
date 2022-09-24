@@ -4,7 +4,7 @@ Project live link [Click here](https://doctors-portal-ab5c7.web.app/).
 
 ## Admin Credentials
 
-Email: mdatiqurrahman9104@gmail.com
+Email: mdatiqurrahman9104@gmail.com \
 Password: 123456
 
 ### `npm start`

@@ -15,7 +15,7 @@ const CheckoutForm = ({ appointment }) => {
     const { _id, price, patient, patientName } = appointment;
 
     useEffect(() => {
-        fetch('https://obscure-bastion-37135.herokuapp.com/create-payment-intent', {
+        fetch('https://doctors-portal-server-side.up.railway.app/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -86,7 +86,7 @@ const CheckoutForm = ({ appointment }) => {
                 transactionId: paymentIntent.id
             }
 
-            fetch(`https://obscure-bastion-37135.herokuapp.com/booking/${_id}`, {
+            fetch(`https://doctors-portal-server-side.up.railway.app/booking/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

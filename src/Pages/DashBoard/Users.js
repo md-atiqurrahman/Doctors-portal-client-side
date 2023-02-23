@@ -4,7 +4,7 @@ import Loading from '../Shared/Loading/Loading';
 import UserRow from './UserRow';
 
 const Users = () => {
-    const { data: users, isLoading ,refetch } = useQuery('users', () => fetch('https://obscure-bastion-37135.herokuapp.com/users', {
+    const { data: users, isLoading ,refetch } = useQuery('users', () => fetch('https://doctors-portal-server-side.up.railway.app/users', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

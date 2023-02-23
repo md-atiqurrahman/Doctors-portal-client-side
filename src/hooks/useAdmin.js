@@ -7,7 +7,7 @@ const useAdmin = user =>{
 
     useEffect(() =>{
         const email = user?.email;
-        fetch(`https://obscure-bastion-37135.herokuapp.com/admin/${email}`,{
+        fetch(`https://doctors-portal-server-side.up.railway.app/admin/${email}`,{
             method: 'GET',
             headers:{
                 'content-type': 'application/json',

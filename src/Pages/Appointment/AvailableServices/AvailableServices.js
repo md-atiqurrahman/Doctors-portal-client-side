@@ -10,7 +10,7 @@ const AvailableServices = ({ date }) => {
     const formattedDate = format(date, 'PP')
 
 
-    const {data:services,isLoading,refetch} = useQuery(['available',formattedDate], () => fetch(`https://obscure-bastion-37135.herokuapp.com/available?date=${formattedDate}`)
+    const {data:services,isLoading,refetch} = useQuery(['available',formattedDate], () => fetch(`https://doctors-portal-server-side.up.railway.app/available?date=${formattedDate}`)
         .then(res => res.json()))
 
 

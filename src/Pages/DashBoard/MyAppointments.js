@@ -12,7 +12,7 @@ const MyAppointments = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`https://obscure-bastion-37135.herokuapp.com/booking?email=${user.email}`, {
+            fetch(`https://doctors-portal-server-side.up.railway.app/booking?email=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`

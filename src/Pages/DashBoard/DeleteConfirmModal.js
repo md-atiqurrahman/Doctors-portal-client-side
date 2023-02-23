@@ -5,7 +5,7 @@ const DeleteConfirmModal = ({deletingDoctor ,refetch ,setDeletingDoctor}) => {
     const {name, email} = deletingDoctor;
 
     const handleDelete = () => {
-        fetch(`https://obscure-bastion-37135.herokuapp.com/doctors/${email}`, {
+        fetch(`https://doctors-portal-server-side.up.railway.app/doctors/${email}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

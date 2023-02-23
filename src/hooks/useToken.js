@@ -8,7 +8,7 @@ const useToken = user => {
         const email = user?.user?.email;
         const currentUser = { email: email };
         if (email) {
-            fetch(`https://obscure-bastion-37135.herokuapp.com/users/${email}`, {
+            fetch(`https://doctors-portal-server-side.up.railway.app/users/${email}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

@@ -7,7 +7,7 @@ const useAdmin = user =>{
 
     useEffect(() =>{
         const email = user?.email;
-        fetch(`https://doctors-portal-server-side.up.railway.app/admin/${email}`,{
+        fetch(`https://doctors-portal-server-side-bice.vercel.app/admin/${email}`,{
             method: 'GET',
             headers:{
                 'content-type': 'application/json',

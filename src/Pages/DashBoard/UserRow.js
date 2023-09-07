@@ -5,7 +5,7 @@ const UserRow = ({ user, index, refetch }) => {
     const { email, role } = user;
 
     const makeAdmin = () => {
-        fetch(`https://doctors-portal-server-side.up.railway.app/users/admin/${email}`, {
+        fetch(`https://doctors-portal-server-side-bice.vercel.app/users/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

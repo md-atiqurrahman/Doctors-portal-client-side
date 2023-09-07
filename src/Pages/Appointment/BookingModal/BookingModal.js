@@ -24,7 +24,7 @@ const BookingModal = ({ date, treatment, setTreatment,refetch }) => {
             phone: event.target.phone.value
         }
 
-        fetch('https://doctors-portal-server-side.up.railway.app/booking', {
+        fetch('https://doctors-portal-server-side-bice.vercel.app/booking', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

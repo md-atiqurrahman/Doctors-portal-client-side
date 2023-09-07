@@ -5,7 +5,7 @@ const DeleteConfirmModal = ({deletingDoctor ,refetch ,setDeletingDoctor}) => {
     const {name, email} = deletingDoctor;
 
     const handleDelete = () => {
-        fetch(`https://doctors-portal-server-side.up.railway.app/doctors/${email}`, {
+        fetch(`https://doctors-portal-server-side-bice.vercel.app/doctors/${email}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
